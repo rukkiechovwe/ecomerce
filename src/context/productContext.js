@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 
 export const ProductContext = React.createContext();
 const initialState = {
@@ -26,18 +26,29 @@ function transformProduct(products) {
 function ProductContextProvider({ children }) {
   const url = "https://fakestoreapi.com/products";
   const [item, dispatch] = useReducer(reducer, initialState);
+  const [error, setError] = useState("");
 
-  useEffect(() => {
+  const fetchProducts = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-      //   console.log(data);
+        //   console.log(data);
         dispatch({ type: "transformProduct", payload: data });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+
+        if (error?.message === "Network Error") {
+          return setError("No Internet Connection");
+        }
+      });
+  };
+
+  useEffect(() => {
+    fetchProducts();
   }, []);
   return (
-    <ProductContext.Provider value={{ item: item }}>
+    <ProductContext.Provider value={{ item, error }}>
       {children}
     </ProductContext.Provider>
   );

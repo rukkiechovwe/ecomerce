@@ -36,26 +36,8 @@ export const Button = styled(PaystackButton)`
   padding: 10px;
   width: 100%;
   border: none;
-  background: hsla(163, 53%, 46%, 0.8);
-  hsla(163,53%,46%,0.8);
-	background: linear-gradient(
-		225deg,
-		hsla(184, 50%, 45%, 1) 0%,
-		hsla(170, 51%, 46%, 1) 41%,
-		hsla(163, 53%, 46%, 0.8) 100%
-	);
-	background: -moz-linear-gradient(
-		225deg,
-		hsla(184, 50%, 45%, 1) 0%,
-		hsla(170, 51%, 46%, 1) 41%,
-		hsla(163, 53%, 46%, 0.8) 100%
-	);
-	background: -webkit-linear-gradient(
-		225deg,
-		hsla(184, 50%, 45%, 1) 0%,
-		hsla(170, 51%, 46%, 1) 41%,
-		hsla(163, 53%, 46%, 0.8) 100%
-	);
+  background: hsl(163, 53%, 46%);
+  background: hsl(163, 53%, 46%);
   border-radius: 5px;
   color: #fff;
   text-transform: capitalize;

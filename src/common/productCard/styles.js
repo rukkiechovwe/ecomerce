@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ProductCard = styled.div`
   width: 100%;
-  margin: 15px 0;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -18,8 +17,7 @@ export const ProductCard = styled.div`
     margin-left: 100%;
   }
   :hover::after {
-    background: #a870253d;
-    //  background: hsla(163.1, 53%, 45.9%, 0.17);
+    background: hsla(163.1, 53%, 45.9%, 0.17);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -27,31 +25,6 @@ export const ProductCard = styled.div`
     top: 0;
     border-radius: 7px;
     transition: all 0.3s linear 0s;
-  }
-
-  @media (min-width: 400px) {
-    width: 48%;
-    margin: 1%;
-  }
-  @media (min-width: 600px) {
-    width: 31%;
-  }
-  @media (min-width: 768px) {
-    width: 22%;
-    ::after {
-      content: "";
-      display: block;
-      margin-left: 22%;
-    }
-  }
-  @media (min-width: 860px) {
-    width: 22.5%;
-  }
-  @media (min-width: 1020px) {
-    width: 17.9%;
-  }
-  @media (min-width: 1400px) {
-    width: 18%;
   }
 `;
 

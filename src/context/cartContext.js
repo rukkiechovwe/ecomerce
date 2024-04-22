@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useReducer } from "react";
+import { updateDoc, doc } from "firebase/firestore";
 import { firestore } from "../firebase";
 import { UserContext } from "./userContext";
 
@@ -92,19 +93,17 @@ const updateQuantity = (items, item) => {
   });
 };
 
-const updateFirestoreCart = (items, total, price) => {
+const updateFirestoreCart = async (items, total, price) => {
   const user_id = localStorage.getItem("user_id");
 
-  return firestore
-    .collection("users")
-    .doc(user_id)
-    .update({
-      cartItems: {
-        items: items,
-        total: total,
-        price: price,
-      },
-    })
+  const userRef = doc(firestore, "users", user_id);
+  await updateDoc(userRef, {
+    cartItems: {
+      items: items,
+      total: total,
+      price: price,
+    },
+  })
     .then(() => {
       console.log("Item successfully updated!");
     })

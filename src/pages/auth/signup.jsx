@@ -1,75 +1,34 @@
-import React, { useState } from "react";
-import { auth, firestore, gProvider } from "../../firebase";
-import { useHistory } from "react-router";
-import { SignupValidation } from "./validate";
-
-import Button from "../../common/button";
-import ProductImage from "../../common/appImages";
-import Onboarding1 from "../../assets/images/happy-shopping.svg";
-import InputField from "../../common/input";
-
+import React from "react";
 import * as S from "./styles";
+import Button from "../../common/button";
+import InputField from "../../common/input";
+import useAuth from "../../hooks/useAuth";
+import AppIllustration from "../../common/appIllustration";
+import { SignupValidation } from "../../config/validate";
+
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
-  const [authErr, setAuthErr] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const history = useHistory();
-
-  const signUpUser = async (n, e, p) => {
-    setAuthErr("");
-    setLoading(true);
-    setErrors({});
-    auth
-      .createUserWithEmailAndPassword(e, p)
-      .then(async (uc) => {
-        setLoading(false);
-        await firestore.collection("users").doc(uc.user.uid).set({
-          name: n,
-          email: e,
-          id: uc.user.uid,
-        });
-        localStorage.setItem("user_id", uc.user.uid);
-        history.push(`/account`);
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log("singup error:", error.message);
-        setAuthErr(error.message);
-      });
-  };
-
-  const signupWithGoogle = (e) => {
-    e.preventDefault();
-    setErrors({});
-    auth
-      .signInWithPopup(gProvider)
-      .then(async (result) => {
-        console.log(result);
-        await firestore.collection("users").doc(result.user.uid).set({
-          name: result.user.displayName,
-          email: result.user.email,
-          id: result.user.uid,
-        });
-        localStorage.setItem("user_id", result.user.uid);
-        history.push(`/account`);
-      })
-
-      .catch((error) => {
-        console.log(error);
-        setAuthErr(error.message);
-      });
-  };
+  const {
+    userName,
+    setUserName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    errors,
+    setErrors,
+    authErr,
+    loading,
+    googleLoading,
+    signUpUser,
+    signupWithGoogle,
+  } = useAuth();
 
   return (
     <S.Container>
       <S.Onboarding>
         <S.ImgContainer>
-          <ProductImage src={Onboarding1} />
+          <AppIllustration />
         </S.ImgContainer>
         <S.Title>Hello There!</S.Title>
         <S.Text>Please, create an account</S.Text>
@@ -133,7 +92,7 @@ const Signup = () => {
             background="#d33d2b"
             textTransform="uppercase"
           >
-            Google
+            {googleLoading ? "please wait..." : "Google"}
           </Button>
           <S.Login>
             Already have an account?

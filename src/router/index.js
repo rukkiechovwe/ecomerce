@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ProductDetails from "../pages/productsDetails";
 import Home from "../pages/home";
 import CartPage from "../pages/cart";
@@ -13,19 +13,19 @@ import Transactions from "../pages/transactions";
 
 function AppRouter() {
   return (
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/thank-you" component={ThankYou} />
-      <Route path="/cart" component={CartPage} />
-      <Route path="/checkout" component={Checkout} />
-      <Route path="/sign-in" component={Login} />
-      <Route path="/sign-up" component={Signup} />
-      <Route path="/reset_password" component={ResetPassword} />
-      <Route path="/account" component={UserProfile} />
-      <Route path="/orders" component={Orders} />
-      <Route path="/transactions" component={Transactions} />
-      <Route path="/:title" component={ProductDetails} />
-    </Switch>
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route path="/thank-you" element={<ThankYou />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/sign-in" element={<Login />} />
+      <Route path="/sign-up" element={<Signup />} />
+      <Route path="/reset_password" element={<ResetPassword />} />
+      <Route path="/account" element={<UserProfile />} />
+      <Route path="/orders" element={<Orders />} />
+      <Route path="/transactions" element={<Transactions />} />
+      <Route path="/details/:title" element={<ProductDetails />} />
+    </Routes>
   );
 }
 

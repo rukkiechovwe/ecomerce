@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { UserContext } from "../../context/userContext";
+
 import Button from "../../common/button";
 import {
   HouseSimple,
@@ -8,9 +7,10 @@ import {
 } from "phosphor-react";
 
 import * as S from "./styles";
+import useAuth from "../../hooks/useAuth";
 
 const DashboardNav = () => {
-  const { signOut } = useContext(UserContext);
+  const { signUserOut } = useAuth();
   return (
     <S.Header>
       <S.Container>
@@ -20,7 +20,7 @@ const DashboardNav = () => {
             <S.Link
               to="/account"
               activeStyle={{
-                background: "hsla(163, 53%, 46%, 0.8)",
+                background: "hsl(163,53%,46%)",
                 color: "#fff",
                 paddingRight: "0px",
                 margin: "1rem",
@@ -35,7 +35,7 @@ const DashboardNav = () => {
             <S.Link
               to="/orders"
               activeStyle={{
-                background: "hsla(163, 53%, 46%, 0.8)",
+                background: "hsl(163,53%,46%)",
                 color: "#fff",
                 paddingRight: "0px",
                 margin: "1rem",
@@ -51,7 +51,7 @@ const DashboardNav = () => {
             <S.Link
               to="/transactions"
               activeStyle={{
-                background: "hsla(163, 53%, 46%, 0.8)",
+                background: "hsl(163,53%,46%)",
                 color: "#fff",
                 paddingRight: "0px",
                 margin: "1rem",
@@ -68,9 +68,7 @@ const DashboardNav = () => {
             width="100%"
             background="transparent"
             color="#F00303"
-            onClick={() => {
-              signOut();
-            }}
+            onClick={() => signUserOut()}
           >
             <Power size={24} />
             <span className="span">Signout</span>

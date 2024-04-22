@@ -50,14 +50,14 @@ export const Link = styled(NavLink)`
   padding: 1rem;
   transition: all 0.2s linear 0s;
   &:hover {
-    background: hsla(163, 53%, 46%, 0.8);
+    background: hsl(163, 53%, 46%);
     color: #fff;
     padding-right: 0px;
     margin: 1rem;
     border-radius: 5px;
     transition: all 0.2s linear 0s;
   }
-  
+
   @media only screen and (max-width: 768px) {
   }
 `;

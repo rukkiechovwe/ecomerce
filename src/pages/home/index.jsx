@@ -2,7 +2,7 @@ import * as S from "./styles";
 import Products from "../../components/products";
 import Nav from "../../components/nav";
 import Button from "../../common/button";
-import hero from "../../assets/images/happy-shopping.svg";
+import AppIllustration from "../../common/appIllustration";
 
 const Home = () => {
   const scrollTo = (id) => {
@@ -17,31 +17,35 @@ const Home = () => {
     <>
       <Nav />
       <S.Wrapper>
-        <S.Hero>
-          <S.HeroText>
-            <S.Heading>Best deals just for you!</S.Heading>
-            <S.Para>
-              Shop to get amazing offers and discounts.<br />
-              Enjoy your shopping with us!
-            </S.Para>
+        <div className="container">
+          <S.Hero>
+            <S.HeroText>
+              <S.Heading>Best deals just for you!</S.Heading>
+              <S.Para>
+                Shop to get amazing offers and discounts. Enjoy your shopping
+                with us!
+              </S.Para>
 
-            <Button
-              name="submit"
-              type="submit"
-              onClick={() => scrollTo("product")}
-              width="170px"
-            >
-              Shop Now
-            </Button>
-          </S.HeroText>
+              <Button
+                name="submit"
+                type="submit"
+                onClick={() => scrollTo("product")}
+                width="170px"
+              >
+                Shop Now
+              </Button>
+            </S.HeroText>
 
-          <S.Imgwrapper>
-            <img src={hero} alt="hero.png" width="100%" height="100%" />
-          </S.Imgwrapper>
-        </S.Hero>
-        <S.Container id="product">
-          <Products />
-        </S.Container>
+            <AppIllustration type="hero" />
+          </S.Hero>
+        </div>
+        <S.ProductWrapper>
+          <S.ProductsHeading>Our Products</S.ProductsHeading>
+
+          <S.Products id="product">
+            <Products />
+          </S.Products>
+        </S.ProductWrapper>
       </S.Wrapper>
     </>
   );

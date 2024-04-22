@@ -18,7 +18,7 @@ export const Input = styled.input`
   border-radius: 5px;
   :focus {
     padding: 0.8rem;
-    border: 1px solid hsla(163, 53%, 46%, 0.8);
+    border: 1px solid hsl(163, 53%, 46%);
   }
   ::placeholder {
     color: #7b7b7b;

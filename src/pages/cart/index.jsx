@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import * as S from "./styles";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 import Nav from "../../components/nav";
 import CartCard from "../../common/cartCard";
@@ -8,7 +8,7 @@ import { CartContext } from "../../context/cartContext";
 import Button from "../../common/button";
 
 function CartPage() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { cartItems, cartTotal, SubTotal } = useContext(CartContext);
 
   return (
@@ -25,15 +25,13 @@ function CartPage() {
               {cartItems.map((item) => (
                 <CartCard cartItem={item} key={item.id} />
               ))}
-              <Button onClick={() => history.push("/checkout")}>
-                Checkout
-              </Button>
+              <Button onClick={() => navigate("/checkout")}>Checkout</Button>
             </S.Container>
           </>
         ) : (
           <div className="no_cart">
             <p>No Item In Cart</p>
-            <Button width="300px" onClick={() => history.push("/")}>
+            <Button width="300px" onClick={() => navigate("/")}>
               Continue Shopping
             </Button>
           </div>

@@ -18,6 +18,7 @@ const Styles = createGlobalStyle`
       font-family: 'Mabry Pro Bold';
       src: url(${MabryBold});
    }
+
    *{
       margin:0;
       padding:0;
@@ -40,7 +41,7 @@ const Styles = createGlobalStyle`
       transition: color 0.2s ease-in;
       font-family: 'Mabry Pro';
       :hover {
-         color: hsla(163,53%,46%,0.8);
+         color: hsla(163.1, 53%, 45.9%, 0.17);
       }
    }
    h1,
@@ -50,7 +51,7 @@ const Styles = createGlobalStyle`
    h5,
    h6 {
       font-family: 'Mabry Pro', sans-serif ;
-      color: hsla(163,53%,46%,0.8);
+      color: hsl(163.1, 53%, 46%);
       font-size: 2.575rem;
       line-height: 3.0625rem;
       font-weight: 600;
@@ -98,16 +99,48 @@ const Styles = createGlobalStyle`
          cursor: not-allowed;
       }
    }
+
+   .container {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+
+      @media only screen and (min-width: 600px) {
+         max-width: 600px;
+         padding: 0;
+      }
+      @media only screen and (min-width: 768px) {
+         max-width: 768px;
+      }
+      @media only screen and (min-width: 1024px) {
+         max-width: 960px;
+      }
+      @media only screen and (min-width: 1200px) {
+         max-width: 1140px;
+      }
+      @media only screen and (min-width: 1400px) {
+         max-width: 1216px;
+      }
+   }
+ 
    .icons{
       width:1.5rem;
    }
+
    .no_cart{
-      height: 100vh;
+      min-height: 100vh;
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 3rem 0;
+      gap: 1rem;
+
+      h3{
+         color: #222;
+      }
    }
    .span{
      margin-left: 10px;
@@ -117,56 +150,6 @@ const Styles = createGlobalStyle`
   .err{
      color: #ff2424;
      text-align: center;
-  }
- .loader-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #fff;
-    position: absolute;
-    width: 100%;
-    z-index: 100;
-    top: 0;
-    right: 0;
-  }
-  .text {
-    margin-top: 20px;
-    color: #fff;
-    text-align: center;
-    margin-top: 70px;
-  }
-  .loader {
-    display: flex;
-    justify-content: center;
-    height: 50px;
-    animation: rotate 3s linear infinite;
-    transform-origin: bottom center;
-  }
-  @keyframes rotate {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  .spin {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: hsla(163, 53%, 46%, 0.8);
-    transform: scale(0.2);
-    margin: -5px;
-    animation: grow 1.5s linear infinite;
-  }
-  .spin-2 {
-    background-color: hsla(163, 53%, 46%, 0.8);
-    animation-delay: 0.75s;
-  }
-  @keyframes grow {
-    50% {
-      transform: scale(1);
-    }
   }
 `;
 

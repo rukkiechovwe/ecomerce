@@ -1,6 +1,8 @@
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
+import { initializeApp } from "firebase/app";
+
+import { getAuth } from "firebase/auth";
+import { getFirestore, arrayUnion } from "firebase/firestore";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
@@ -11,9 +13,11 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
-const fb = firebase.initializeApp(firebaseConfig);
-export const gProvider = new firebase.auth.GoogleAuthProvider();
-export const Ifirebase = fb;
-export const auth = fb.auth();
-export const firestore = fb.firestore();
-export const fieldValue = firebase.firestore.FieldValue;
+const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
+export const firestore = getFirestore(app);
+export const gProvider = new GoogleAuthProvider();
+
+export const Ifirebase = app;
+export const fieldArrayUnion = arrayUnion;

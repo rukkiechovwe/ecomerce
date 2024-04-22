@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
 import * as S from "./styles";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 import Nav from "../../components/nav";
 import SummaryDetails from "../../components/summaryDetails";
 import BillingInformation from "../../components/billingInformation";
 
 function Checkout() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const user_id = localStorage.getItem("user_id");
 
   useEffect(() => {
     if (!user_id) {
-      history.push("/sign-in");
+      navigate("/sign-in");
     }
-  }, [user_id, history]);
+  }, [user_id]);
 
   return (
     <>

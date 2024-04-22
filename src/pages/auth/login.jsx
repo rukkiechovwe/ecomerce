@@ -1,64 +1,31 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router";
+import React from "react";
 import * as S from "./styles";
-import { auth, gProvider } from "../../firebase";
-import { LoginValidation } from "./validate";
-
 import InputField from "../../common/input";
 import Button from "../../common/button";
-import ProductImage from "../../common/appImages";
-import Onboarding1 from "../../assets/images/happy-shopping.svg";
+import useAuth from "../../hooks/useAuth";
+import AppIllustration from "../../common/appIllustration";
+import { LoginValidation } from "../../config/validate";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
-  const [authErr, setAuthErr] = useState("");
-  const [loading, setLoading] = useState(false);
-  const history = useHistory();
-
-  const signInUser = (e, p) => {
-    setAuthErr("");
-    setLoading(true);
-    setErrors({});
-    auth
-      .signInWithEmailAndPassword(e, p)
-      .then((uc) => {
-        setLoading(false);
-        console.log("you are signed in as", uc.user.email);
-        localStorage.setItem("user_id", uc.user.uid);
-        history.push(`/account`);
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log("Error message: ", error.message);
-        setAuthErr(error.message);
-      });
-  };
-
-  const signInWithGoogle = async (e) => {
-    e.preventDefault();
-    setAuthErr("");
-    setErrors({});
-
-    auth
-      .signInWithPopup(gProvider)
-      .then((uc) => {
-        console.log(uc);
-        localStorage.setItem("user_id", uc.user.uid);
-        history.push(`/account`);
-      })
-      .catch((error) => {
-        console.log("Error message: ", error.message);
-        setAuthErr(error.message);
-      });
-  };
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    errors,
+    authErr,
+    setErrors,
+    loading,
+    googleLoading,
+    signInUser,
+    signInWithGoogle,
+  } = useAuth();
 
   return (
     <S.Container>
       <S.Onboarding>
         <S.ImgContainer>
-          <ProductImage src={Onboarding1} />
+          <AppIllustration />
         </S.ImgContainer>
         <S.Title>Welcome Back!</S.Title>
         <S.Text>Please, login to your account</S.Text>
@@ -108,7 +75,7 @@ const Login = () => {
             background="#d33d2b"
             textTransform="uppercase"
           >
-            Google
+            {googleLoading ? "please wait..." : "Google"}
           </Button>
           <S.Login>
             Don't have an account?

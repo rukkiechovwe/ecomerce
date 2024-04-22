@@ -48,25 +48,7 @@ export const Onboarding = styled.div`
 		justify-content: center;
 		align-items: center;
 		padding: 2rem;
-		background: hsla(184, 50%, 45%, 1);
-		background: linear-gradient(
-			225deg,
-			hsla(184, 50%, 45%, 1) 0%,
-			hsla(170, 51%, 46%, 1) 41%,
-			hsla(163, 53%, 46%, 0.8) 100%
-		);
-		background: -moz-linear-gradient(
-			225deg,
-			hsla(184, 50%, 45%, 1) 0%,
-			hsla(170, 51%, 46%, 1) 41%,
-			hsla(163, 53%, 46%, 0.8) 100%
-		);
-		background: -webkit-linear-gradient(
-			225deg,
-			hsla(184, 50%, 45%, 1) 0%,
-			hsla(170, 51%, 46%, 1) 41%,
-			hsla(163, 53%, 46%, 0.8) 100%
-		);
+		background: hsl(163,53%,46%);
 
 	@media only screen and (max-width: 768px) {
 		display: none;

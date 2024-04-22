@@ -6,7 +6,7 @@ export const Button = styled.button`
    margin: 1rem 0;
    padding: 12px;
    border: none;
-   border-radius: 5px;
+   border-radius: 50px;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -16,28 +16,7 @@ export const Button = styled.button`
    right: ${(props) => (props.position ? "0" : "0")};
    color: ${(props) => (props.color ? props.color : "#fff")};
    text-transform: ${(props) => props.textTransform || "capitalize"};
-   background: ${(props) =>
-     props.background ||
-     `hsla(163,53%,46%,0.8);
-	background: linear-gradient(
-		225deg,
-		hsla(184, 50%, 45%, 1) 0%,
-		hsla(170, 51%, 46%, 1) 41%,
-		hsla(163, 53%, 46%, 0.8) 100%
-	);
-	background: -moz-linear-gradient(
-		225deg,
-		hsla(184, 50%, 45%, 1) 0%,
-		hsla(170, 51%, 46%, 1) 41%,
-		hsla(163, 53%, 46%, 0.8) 100%
-	);
-	background: -webkit-linear-gradient(
-		225deg,
-		hsla(184, 50%, 45%, 1) 0%,
-		hsla(170, 51%, 46%, 1) 41%,
-		hsla(163, 53%, 46%, 0.8) 100%
-	);
-   `};
+   background: ${(props) => props.background || "hsl(163,53%,46%);"};
 
 }
 `;
