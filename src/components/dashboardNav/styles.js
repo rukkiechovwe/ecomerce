@@ -3,14 +3,18 @@ import { NavLink } from "react-router-dom";
 
 export const Header = styled.div`
   background-color: #fff;
-  width: 300px;
+  width: 250px;
   overflow: hidden;
-  min-height: 100vh;
-  height: auto;
+  height: 100vh;
+  position: fixed;
 `;
 export const Container = styled.nav`
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 `;
 export const Ul = styled.ul`
   display: flex;
@@ -26,8 +30,6 @@ export const ButtonContainer = styled.div`
   list-style: none;
   font-size: 0.9rem;
   padding: 1rem;
-  position: absolute;
-  bottom: 20px;
   text-align: center;
   font-weight: 900;
   width: 100%;
@@ -49,12 +51,10 @@ export const Link = styled(NavLink)`
   font-weight: 500;
   padding: 1rem;
   transition: all 0.2s linear 0s;
-  &:hover {
-    background: hsl(163, 53%, 46%);
-    color: #fff;
+  &:hover,
+  &.active {
+    color: hsl(163, 53%, 46%) !important;
     padding-right: 0px;
-    margin: 1rem;
-    border-radius: 5px;
     transition: all 0.2s linear 0s;
   }
 

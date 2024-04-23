@@ -1,8 +1,8 @@
 import * as S from "./styles";
 import Products from "../../components/products";
-import Nav from "../../components/nav";
 import Button from "../../common/button";
 import AppIllustration from "../../common/appIllustration";
+import WebisteLayout from "../../components/layout/home";
 
 const Home = () => {
   const scrollTo = (id) => {
@@ -14,8 +14,7 @@ const Home = () => {
     }
   };
   return (
-    <>
-      <Nav />
+    <WebisteLayout>
       <S.Wrapper>
         <div className="container">
           <S.Hero>
@@ -47,7 +46,7 @@ const Home = () => {
           </S.Products>
         </S.ProductWrapper>
       </S.Wrapper>
-    </>
+    </WebisteLayout>
   );
 };
 

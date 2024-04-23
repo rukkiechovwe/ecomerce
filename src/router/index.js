@@ -6,10 +6,10 @@ import Checkout from "../pages/checkout";
 import Login from "../pages/auth/login";
 import Signup from "../pages/auth/signup";
 import ResetPassword from "../pages/auth/reset-password";
-import UserProfile from "../pages/profile";
+// import UserProfile from "../pages/profile";
 import ThankYou from "../pages/thankYou";
 import Orders from "../pages/orders";
-import Transactions from "../pages/transactions";
+import NotFound from "../components/notFound";
 
 function AppRouter() {
   return (
@@ -21,10 +21,10 @@ function AppRouter() {
       <Route path="/sign-in" element={<Login />} />
       <Route path="/sign-up" element={<Signup />} />
       <Route path="/reset_password" element={<ResetPassword />} />
-      <Route path="/account" element={<UserProfile />} />
+      {/* <Route path="/account" element={<UserProfile />} /> */}
       <Route path="/orders" element={<Orders />} />
-      <Route path="/transactions" element={<Transactions />} />
       <Route path="/details/:title" element={<ProductDetails />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

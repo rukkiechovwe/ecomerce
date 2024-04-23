@@ -1,19 +1,18 @@
 import React, { useContext } from "react";
-import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
+import * as S from "./styles";
 
-import Nav from "../../components/nav";
-import CartCard from "../../common/cartCard";
 import { CartContext } from "../../context/cartContext";
+import CartCard from "../../common/cartCard";
 import Button from "../../common/button";
+import WebisteLayout from "../../components/layout/home";
 
 function CartPage() {
   const navigate = useNavigate();
   const { cartItems, cartTotal, SubTotal } = useContext(CartContext);
 
   return (
-    <>
-      <Nav />
+    <WebisteLayout>
       <S.Wrapper>
         {cartTotal > 0 ? (
           <>
@@ -37,7 +36,7 @@ function CartPage() {
           </div>
         )}
       </S.Wrapper>
-    </>
+    </WebisteLayout>
   );
 }
 

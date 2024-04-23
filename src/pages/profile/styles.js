@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  display: flex;
-`;
 export const Container = styled.div`
   padding: 4rem 1rem;
   width: 100%;

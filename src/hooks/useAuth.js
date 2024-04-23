@@ -33,7 +33,7 @@ export default function useAuth() {
       case "set":
         setLoading(false);
         localStorage.setItem(TOKEN, id);
-        navigate(`/account`);
+        navigate(`/orders`);
         break;
       case "get":
         break;
@@ -56,7 +56,7 @@ export default function useAuth() {
   };
 
   const signUpUser = async (name, email, password) => {
-    handleReset("google");
+    handleReset();
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (uc) => {
@@ -88,7 +88,7 @@ export default function useAuth() {
   };
 
   const signInUser = (email, password) => {
-    handleReset("google");
+    handleReset();
     signInWithEmailAndPassword(auth, email, password)
       .then((uc) => {
         console.log("you are signed in as", uc.user.email);

@@ -15,7 +15,7 @@ const Nav = () => {
           <S.Logo to="/">Rk-Store</S.Logo>
           <S.NavContainer>
             {user_id ? (
-              <S.NavLink to="/account">Account</S.NavLink>
+              <S.NavLink to="/orders">Account</S.NavLink>
             ) : (
               <>
                 <S.NavLink to="/sign-in">LOGIN</S.NavLink>

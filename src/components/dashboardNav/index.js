@@ -1,13 +1,12 @@
-
-import Button from "../../common/button";
-import {
-  HouseSimple,
-  // Ticket, Handbag,
-  Power,
-} from "phosphor-react";
-
+import { Handbag, Power } from "phosphor-react";
 import * as S from "./styles";
 import useAuth from "../../hooks/useAuth";
+import Button from "../../common/button";
+
+const nav = [
+  // { title: "Home", link: "/account", icon: <HouseSimple size={24} /> },
+  { title: "Orders", link: "/orders", icon: <Handbag size={24} /> },
+];
 
 const DashboardNav = () => {
   const { signUserOut } = useAuth();
@@ -16,52 +15,14 @@ const DashboardNav = () => {
       <S.Container>
         <S.Ul>
           <S.Logo to="/">Rk-Store</S.Logo>
-          <S.NavContainer>
-            <S.Link
-              to="/account"
-              activeStyle={{
-                background: "hsl(163,53%,46%)",
-                color: "#fff",
-                paddingRight: "0px",
-                margin: "1rem",
-                borderRadius: "5px",
-                transition: "all 0.2s linear 0s",
-              }}
-            >
-              <HouseSimple size={24} /> <span className="span">Home</span>
-            </S.Link>
-          </S.NavContainer>
-          {/* <S.NavContainer>
-            <S.Link
-              to="/orders"
-              activeStyle={{
-                background: "hsl(163,53%,46%)",
-                color: "#fff",
-                paddingRight: "0px",
-                margin: "1rem",
-                borderRadius: "5px",
-                transition: "all 0.2s linear 0s",
-              }}
-            >
-              <Handbag size={24} />
-              <span className="span">Orders</span>
-            </S.Link>
-          </S.NavContainer>
-          <S.NavContainer>
-            <S.Link
-              to="/transactions"
-              activeStyle={{
-                background: "hsl(163,53%,46%)",
-                color: "#fff",
-                paddingRight: "0px",
-                margin: "1rem",
-                borderRadius: "5px",
-                transition: "all 0.2s linear 0s",
-              }}
-            >
-              <Ticket size={24} /> <span className="span">Transactions</span>
-            </S.Link>
-          </S.NavContainer> */}
+          {nav.map((item) => (
+            <S.NavContainer>
+              <S.Link to={item.link}>
+                {item.icon}
+                <span className="span">{item.title}</span>
+              </S.Link>
+            </S.NavContainer>
+          ))}
         </S.Ul>
         <S.ButtonContainer>
           <Button

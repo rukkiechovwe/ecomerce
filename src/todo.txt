@@ -1,7 +1,3 @@
 _____________TODO_____________
 - Error Handling
-- 404 page
-- User Dashboard
-   + View Orders
-   + Transaction History
 
