@@ -3,7 +3,7 @@
 
 An elegant ecommerce application 
 
-[Preview Demo](https://rukkies-ecommerce.netlify.app/)
+[Preview Demo](https://rukkies-ecommerce.vercel.app/)
 
 ## Getting Started
 - clone this repository
